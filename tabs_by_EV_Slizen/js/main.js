@@ -85,4 +85,36 @@ window.addEventListener('DOMContentLoaded', function() {
 
     setClock('timer', deadLine);
 
+    //Modal
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        morer = document.querySelectorAll('.description-btn');
+
+    more.addEventListener('click', function(){
+        modal(this);
+    });
+
+    close.addEventListener('click', function(){
+        modal(this);
+    });
+
+    for (let i = 0; i < morer.length; i++) {
+        morer[i].addEventListener('click', function() {
+            modal(this);
+        });
+    }
+
+    function modal(btn) {
+        if (btn !== close) {
+            overlay.style.display = 'block';
+            btn.classList.add('more-splash');
+            document.body.style.overflow = 'hidden';
+        } else {
+            overlay.style.display = 'none';
+            btn.classList.remove('more-splash');
+            document.body.style.overflow = '';
+        }
+    }
 });
